@@ -2,7 +2,7 @@
 These modules are coded for Corne (CRKBD)'s 128x32 and can be integrated as standalone files without extra OLED code in `keymap.c`. They are setup to animate Bongocat or Luna on the primary display with status icons rendered on the secondary.
 
 # QMK Integration
-1. Save this folder in the user keymap (or userspace) directory.
+1. Save all files into a folder named `oled` within the user keymap (or userspace) directory.
 2. Add the following lines into `rules.mk`:
    ```c
    OLED_ENABLE = yes

@@ -11,8 +11,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        keyboard: [corne, cradio, cradio_kb2040, ika]
+        keyboard: [corne, kyria, sweep]
         split: [left, right]
+        branch: [develop]
 
     steps:
     - name: Checkout QMK

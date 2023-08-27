@@ -8,7 +8,7 @@
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1500U
 // Space saving options
 #define LAYER_STATE_8BIT
-#define NO_ACTION_ONESHOT
+//#define NO_ACTION_ONESHOT
 // Tap-hold settings
 #define TAPPING_TERM 210
 #define TAPPING_TERM_PER_KEY
@@ -57,6 +57,8 @@
 #ifdef OLED_ENABLE
 #   define OLED_TIMEOUT 10000
 #   define OLED_BRIGHTNESS 180
+// Already defined by Aurora Sweep base code
+#   undef OLED_FONT_H
 #   define OLED_FONT_H "oled/oledfont.c"
 #endif
 

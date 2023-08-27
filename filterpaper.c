@@ -15,12 +15,10 @@ bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     // Hold Control and Shift with a nested key tap on the opposite hand
     return IS_BILATERAL_TAP(record, next_record) && IS_MOD_TAP_CS(keycode);
 }
-
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     // Activate layer with another key press
@@ -38,16 +36,14 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     return false;
 }
 
-
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     // Decrease tapping term for the home row Shift
     return IS_HOMEROW(record) && IS_MOD_TAP_SHIFT(keycode) ? TAPPING_TERM - 50 : TAPPING_TERM;
 }
 
-
 // Turn off caps lock at the end of a word
 static inline bool process_caps_unlock(uint16_t keycode, keyrecord_t *record) {
-    bool    const caps = host_keyboard_led_state().caps_lock;
+    bool const    caps = host_keyboard_led_state().caps_lock;
     uint8_t const mods = get_mods();
 
     // Ignore inactive caps lock status and shifted keys
@@ -65,13 +61,14 @@ static inline bool process_caps_unlock(uint16_t keycode, keyrecord_t *record) {
         case KC_BSPC:
         case KC_MINS:
         case KC_UNDS:
-        case KC_CAPS: if (!mods) return true;
-        default: tap_code(KC_CAPS);
+        case KC_CAPS:
+            if (!mods) return true;
+        default:
+            tap_code(KC_CAPS);
     }
 
     return true;
 }
-
 
 // Send custom hold keycode
 static inline bool process_tap_hold(uint16_t keycode, keyrecord_t *record) {
@@ -80,21 +77,43 @@ static inline bool process_tap_hold(uint16_t keycode, keyrecord_t *record) {
     return false;
 }
 
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
-        if (!process_autocorrect(keycode, record) || !process_caps_unlock(keycode, record)) return false;
+        if (!process_caps_unlock(keycode, record)) return false;
+// Autocorrect
+#ifdef AC_ENABLE
+        if (!process_autocorrect(keycode, record)) return false;
+#endif
 
         // Clipboard shortcuts
-        if      (keycode == TH_M)    return process_tap_hold(Z_PST, record);
-        else if (keycode == TH_COMM) return process_tap_hold(Z_CPY, record);
-        else if (keycode == TH_DOT)  return process_tap_hold(Z_CUT, record);
-        else if (keycode == TH_SLSH) return process_tap_hold(Z_UND, record);
+        // if      (keycode == TH_M)           return process_tap_hold(Z_PST, record);
+        // else if (keycode == TH_COMM)        return process_tap_hold(Z_CPY, record);
+        // else if (keycode == TH_DOT)         return process_tap_hold(Z_CUT, record);
+        // else if (keycode == TH_SLSH)        return process_tap_hold(Z_UND, record);
+        if (keycode == TH_Q)
+            return process_tap_hold(KC_ESC, record);
+        // else if (keycode == TH_Z)
+        //     return process_tap_hold(KC_BTN1, record);
+        // else if (keycode == TH_X)
+        //     return process_tap_hold(KC_BTN2, record);
+        // else if (keycode == TH_C)
+        //     return process_tap_hold(PLP_SCR, record);
+        else if (keycode == TH_QUOT_COLN)
+            return process_tap_hold(KC_COLN, record);
+        else if (keycode == TH_P_COLN)
+            return process_tap_hold(KC_COLN, record);
+        else if (keycode == TH_DOT_UNDS)
+            return process_tap_hold(KC_UNDS, record);
+        else if (keycode == TH_COMM_MINUS)
+            return process_tap_hold(KC_MINUS, record);
+        else if (keycode == TH_SLSH_EXLM)
+            return process_tap_hold(KC_EXLM, record);
+        else if (keycode == TH_SCLN_COLN)
+            return process_tap_hold(KC_COLN, record);
     }
 
     return true;
 }
-
 
 void housekeeping_task_user(void) {
     // Restore state after 3 minutes
@@ -106,7 +125,17 @@ void housekeeping_task_user(void) {
     }
 }
 
-
 // Simplify unused magic config functions
-uint8_t mod_config(uint8_t mod) { return mod; }
-uint16_t keycode_config(uint16_t keycode) { return keycode; }
+uint8_t mod_config(uint8_t mod) {
+    return mod;
+}
+uint16_t keycode_config(uint16_t keycode) {
+    return keycode;
+}
+
+// // Tap Dance definitions
+// tap_dance_action_t tap_dance_actions[] = {
+//     // Tap once for Escape, twice for Caps Lock
+//     [TD_Z_FNC] = ACTION_TAP_DANCE_LAYER_MOVE(KC_Z, FNC),
+// };
+

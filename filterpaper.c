@@ -73,11 +73,31 @@ bool process_record_user(uint16_t const keycode, keyrecord_t *record) {
 #endif
 		// Clipboard shortcuts.
 		switch(keycode) {
-			case TH_SLSH: return process_tap_hold(Z_UND, record);
-			case TH_DOT:  return process_tap_hold(Z_CUT, record);
-			case TH_COMM: return process_tap_hold(Z_CPY, record);
-			case TH_M:    return process_tap_hold(Z_PST, record);
-		}
-	}
+			// case TH_SLSH: return process_tap_hold(Z_UND, record);
+			// case TH_DOT:  return process_tap_hold(Z_CUT, record);
+			// case TH_COMM: return process_tap_hold(Z_CPY, record);
+			// case TH_M:    return process_tap_hold(Z_PST, record);
+			case TH_Q:    return process_tap_hold(KC_ESC, record);
+			case TH_Z:    return process_tap_hold(KC_BTN1, record);
+			case TH_X:    return process_tap_hold(KC_BTN2, record);
+			case TH_C:    return process_tap_hold(PLP_SCR, record);
+  		case TH_QUOT_COLN: return process_tap_hold(KC_COLN, record);
+  		case TH_P_COLN: return process_tap_hold(KC_COLN, record);
+      case TH_DOT_UNDS: return process_tap_hold(KC_UNDS, record);
+      case TH_COMM_MINUS: return process_tap_hold(KC_MINUS, record);
+      case TH_SLSH_EXLM: return process_tap_hold(KC_EXLM, record);
+      case TH_SCLN_COLN: return process_tap_hold(KC_COLN, record);
+    }
+  }
 	return true;
 }
+
+// void keyboard_post_init_user(void) {
+// #if defined(KEYBOARD_splitkb_aurora_sweep_rev1)
+//   g_led_config.flags[21] = LED_FLAG_MODIFIER;
+//   g_led_config.flags[22] = LED_FLAG_MODIFIER;
+//   g_led_config.flags[44] = LED_FLAG_MODIFIER;
+//   g_led_config.flags[45] = LED_FLAG_MODIFIER;
+// }
+// #endif
+

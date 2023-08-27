@@ -263,3 +263,4 @@ static bool CANDY_FLOW(effect_params_t* params) {
 }
 #	endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif // ENABLE_RGB_MATRIX_CANDY_FLOW
+

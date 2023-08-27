@@ -1,0 +1,12 @@
+{
+	"keyboard": "splitkb/aurora/sweep/rev1",
+	"keymap": "p4p3r",
+	"layout": "LAYOUT_34key_w",
+	"layers": [
+		[ "HRM(_BASE)" ],
+		[ "HRM(_COLE_DH)" ],
+		[ "_SYMB" ],
+		[ "_NUMB" ],
+		[ "_FUNC" ]
+	]
+}

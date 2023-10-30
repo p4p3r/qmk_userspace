@@ -8,7 +8,11 @@
 ACTN(swap_l, swap_hands_toggle(), KC_X, KC_C, KC_V)
 ACTN(swap_r, swap_hands_toggle(), TH_M, TH_COMM, TH_DOT)
 #endif
+
+// Autocorrect
+#ifdef AC_ENABLE
 ACTN(tog_ac, autocorrect_toggle(), KC_U, KC_I, KC_O)
+#endif
 
 // Macros
 SSTR(vi_quit,  ":q!",    KC_Q,    KC_W)
@@ -30,4 +34,6 @@ COMB(thmb_l,   KC_NO,    SYM_TAB, LCA_ENT)
 COMB(thmb_r,   KC_NO,    SFT_SPC, NUM_BSP)
 // Layer toggles
 COMB(tog_num,  TG(NUM),  NUM_BSP, KC_N, TH_M)
-COMB(tog_fnc,  TG(FNC),  SYM_TAB, KC_B, KC_V)
+// COMB(tog_fnc,  TG(FNC),  SYM_TAB, KC_B, KC_V)
+COMB(tog_fnc,  TG(FNC),  KC_X, KC_C)
+

@@ -14,9 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        keyboard: [cradio, cradio_kb2040, ika]
+        keyboard: [corne, kyria, sweep]
         split: [left, right]
-
     steps:
     - name: Checkout QMK
       uses: actions/checkout@main

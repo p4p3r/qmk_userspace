@@ -119,6 +119,7 @@ static unsigned char const *tap[TAP_FRAMES] = {
     tap0, tap1 };
 
 
+// #if !defined(KEYBOARD_splitkb_aurora_sweep_rev1)
 // Left frames
 static unsigned char const left_idle0[] PROGMEM = {142,
     0x03,0x80,0x2e,0x00,0x84,0x80,0x40,0x30,0x08,0x03,0x04,0x02,0x08,0x05,0x10,0x04,
@@ -203,7 +204,6 @@ static unsigned char const left_tap1[] PROGMEM = {151,
 static unsigned char const *left_tap[TAP_FRAMES] = {
     left_tap0, left_tap1 };
 
-
 // RLE decoding loop that reads count from frame index
 // If count >= 0x80, next (count - 128) bytes are unique
 // If count < 0x80, next byte is repeated by count
@@ -263,7 +263,11 @@ static void render_bongocat(void) {
 // Init and rendering calls
 oled_rotation_t oled_init_user(oled_rotation_t const rotation) {
     if (is_keyboard_master()) {
+#if defined(KEYBOARD_splitkb_aurora_sweep_rev1)
+        return is_keyboard_left() ? OLED_ROTATION_0 : OLED_ROTATION_180;
+#else
         return is_keyboard_left() ? rotation : OLED_ROTATION_180;
+#endif
     } else {
         return OLED_ROTATION_270;
     }

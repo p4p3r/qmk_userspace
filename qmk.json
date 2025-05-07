@@ -3,7 +3,11 @@
     "build_targets": [
         [
             "splitkb/aurora/sweep/rev1",
-            "p4p3r_v1"
+            "p4p3r"
+        ],
+        [
+            "splitkb/aurora/sweep/rev1",
+            "p4p3r_nano"
         ]
     ]
 }

@@ -1,0 +1,3 @@
+USER_NAME := p4p3r
+BKB_LAYOUT := yes
+NANOBOOT := yes

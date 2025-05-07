@@ -1,4 +1,9 @@
 {
-    "userspace_version": "1.0",
-    "build_targets": []
+    "userspace_version": "1.1",
+    "build_targets": [
+        [
+            "splitkb/aurora/sweep/rev1",
+            "p4p3r_v1"
+        ]
+    ]
 }

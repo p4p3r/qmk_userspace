@@ -1,0 +1,9 @@
+[submodule "modules/drashna"]
+	path = modules/drashna
+	url = https://github.com/drashna/qmk_modules.git
+[submodule "p4p3r"]
+	path = p4p3r
+	url = git@github.com:p4p3r/qmk_userspace_common.git
+[submodule "users/p4p3r"]
+	path = users/p4p3r
+	url = git@github.com:p4p3r/qmk_userspace_common.git

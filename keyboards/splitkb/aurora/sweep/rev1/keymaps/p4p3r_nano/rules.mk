@@ -1,3 +1,5 @@
 USER_NAME := p4p3r
-BKB_LAYOUT := yes
 NANOBOOT := yes
+
+RGB_MATRIX_ENABLE = yes
+RGBLIGHT_ENABLE = no
